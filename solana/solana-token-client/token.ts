@@ -39,7 +39,7 @@ async function createTokenAccount(
     owner, //新代币账户的   所有者账户
     //keyarir 这是一个可选参数，用于指定新代币账户的地址。如果没有提供 keypair，`createAccount` 函数将默认从关联的 `mint` 和 `owner` 账户派生（其实就是指定地址）
   )
-  console.log("Token Account: ", tokenAccount);
+  // console.log("Token Account: ", tokenAccount);
   console.log(
     `Token Account: https://explorer.solana.com/address/${tokenAccount.address}?cluster=devnet`
   )
@@ -161,7 +161,9 @@ async function burnTokens(
 
 async function main() {
   //创建铸币厂
-  const connection = new web3.Connection("https://devnet.helius-rpc.com/?api-key=6e693598-a890-40f8-8777-117c3deacf51", "confirmed");
+  let DEVNET_RPC = process.env.DEVNET_RPC || ''
+
+  const connection = new web3.Connection(DEVNET_RPC, "confirmed");
   const user = await initializeKeypair(connection);
 
   const mint = await createNewMint(

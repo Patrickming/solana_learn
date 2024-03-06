@@ -37,8 +37,6 @@ async function airdropSolIfNeeded(
         const airdropSignature = await connection.requestAirdrop(signer.publicKey, web3.LAMPORTS_PER_SOL)
         const latestBlockHash = await connection.getLatestBlockhash()
         //只传递signature的方法已被弃用
-        //为什么要blockhash 因为判断这个指令是不是重复或者延迟很多的 因为发rpc是udp方式的 所以需要blockhash来确认指令是否已经被确认
-        //超过150个块60秒就需要这些别的来确定  一个块是400ms
         await connection.confirmTransaction({
             blockhash: latestBlockHash.blockhash,
             lastValidBlockHeight: latestBlockHash.lastValidBlockHeight,

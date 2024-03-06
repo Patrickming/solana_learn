@@ -5,8 +5,9 @@ import { getKeypairFromEnvironment, requestAndConfirmAirdropIfRequired } from "@
 dotenv.config();
 
 const payer = getKeypairFromEnvironment('SECRET_KEY2')
-const connection = new web3.Connection("https://devnet.helius-rpc.com/?api-key=6e693598-a890-40f8-8777-117c3deacf51", "confirmed")
+let DEVNET_RPC = process.env.DEVNET_RPC || ''
 
+const connection = new web3.Connection(DEVNET_RPC, "confirmed");
 const newBalance = await requestAndConfirmAirdropIfRequired(
     connection,
     payer.publicKey,

@@ -23,8 +23,9 @@ console.log(`suppliedToPubkey: ${suppliedToPubkey}`);
 
 const toPubkey = new PublicKey(suppliedToPubkey);
 
-const connection = new Connection("https://devnet.helius-rpc.com/?api-key=6e693598-a890-40f8-8777-117c3deacf51", "confirmed");
+let DEVNET_RPC = process.env.DEVNET_RPC || ''
 
+const connection = new Connection(DEVNET_RPC, "confirmed");
 console.log(
   `✅ Loaded our own keypair, the destination public key, and connected to Solana`
 );
@@ -37,7 +38,7 @@ const LAMPORTS_TO_SEND = 5000;
 const sendSolInstruction = SystemProgram.transfer({
   fromPubkey: senderKeypair.publicKey,
   toPubkey,
-  lamports: 15 * LAMPORTS_PER_SOL,
+  lamports: LAMPORTS_TO_SEND,
 });
 
 //添加指令进交易

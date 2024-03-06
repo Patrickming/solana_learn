@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@metaplex-foundation/js": "^0.17.12",
+    "@project-serum/borsh": "^0.2.5",
     "@solana-developers/helpers": "^1.5.1",
     "@solana/spl-token": "^0.3.7",
     "@solana/wallet-adapter-base": "^0.9.23",

@@ -1,0 +1,5 @@
+{
+    "rust-analyzer.linkedProjects": [
+        ".\\solana\\local\\hello-world\\Cargo.toml"
+    ]
+}

@@ -4,5 +4,5 @@ package-lock.json
 pnpm-lock.yaml
 target/
 test-ledger/
-Cargo.lock
+# Cargo.lock
 test-ledger/

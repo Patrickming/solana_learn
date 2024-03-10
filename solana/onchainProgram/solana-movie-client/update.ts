@@ -24,7 +24,7 @@ const movieInstructionLayout = borsh.struct([
 
 async function sendTestMovieReview(signer: web3.Keypair, programId: web3.PublicKey, connection: web3.Connection) {
     let buffer = Buffer.alloc(1000)
-    const movieTitle = `Braveheart`
+    const movieTitle = `Braveheart2`
     movieInstructionLayout.encode(
         {
             variant: 1, //这里选择1或者0

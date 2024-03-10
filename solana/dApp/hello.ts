@@ -4,20 +4,20 @@ import Dotenv from "dotenv"
 Dotenv.config()
 
 let programId = new web3.PublicKey(
-    "FamhGQR8MWLUoyzig1eBAHj5pZcDYA5ZkZ99d4AVrqvw"
+    "CbTAU3ennX5j4LaQ8hoH6Hub4RzVMwDQcZuPpFCbFfa6"
 )
 
 let connection = new web3.Connection("http://localhost:8899","confirmed")
 
 async function main() {
     let payer = await initializeKeypair(connection)
-    await connection.requestAirdrop(payer.publicKey, web3.LAMPORTS_PER_SOL * 1)
+    // await connection.requestAirdrop(payer.publicKey, web3.LAMPORTS_PER_SOL * 1)
 
     const transactionSignature = await sayHello(payer)
 
     console.log(
-        `Transaction: https://explorer.solana.com/tx/${transactionSignature}?cluster=devnet`
-    )
+        `transactionSignature:${transactionSignature}`
+    )//https://explorer.solana.com/tx/qTq1J5oYmu5iq1YEGeHxMdR6vMdEf6s1wVA41Mv6To89CxgpMdAvWYPV6pQNN4JQ4q5k5MJPZZHDKejEs4vF7Hk?cluster=custom&customUrl=http%3A%2F%2Flocalhost%3A8899
 }
 
 main()

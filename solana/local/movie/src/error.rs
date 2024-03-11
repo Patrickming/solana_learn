@@ -19,6 +19,9 @@ pub enum ReviewError {
 
     #[error("Rating greater than 5 or less than 1")]
     InvalidRating,
+
+    #[error("Accounts do not match")]
+    IncorrectAccountError,
 }
 
 //编译器期望程序返回的错误类型是来自 `solana_program` crate 的 `ProgramError` 类型

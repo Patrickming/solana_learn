@@ -16,6 +16,7 @@ pub enum MovieInstruction {
     AddComment {
         comment: String,
     },
+    InitializeMint,
 }
 
 #[derive(BorshDeserialize)]
@@ -49,9 +50,10 @@ impl MovieInstruction {
             2 => {
                 let payload = CommentPayload::try_from_slice(rest).unwrap();
                 Self::AddComment {
-                    comment: payload.comment
+                    comment: payload.comment,
                 }
-            },
+            }
+            3 => Self::InitializeMint,
             _ => return Err(ProgramError::InvalidInstructionData),
         })
     }

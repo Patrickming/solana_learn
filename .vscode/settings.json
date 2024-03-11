@@ -1,6 +1,6 @@
 {
     "rust-analyzer.linkedProjects": [
         "solana/local/hello-world/Cargo.toml",
-        "solana/local/movie/Cargo.toml",
+        "./solana/local/movie/Cargo.toml"
     ]
 }

@@ -13,6 +13,9 @@ pub enum MovieInstruction {
         rating: u8,
         description: String,
     },
+    AddComment {
+        comment: String,
+    },
 }
 
 #[derive(BorshDeserialize)]
@@ -20,6 +23,10 @@ struct MovieReviewPayload {
     title: String,
     rating: u8,
     description: String,
+}
+#[derive(BorshDeserialize)]
+struct CommentPayload {
+    comment: String,
 }
 
 impl MovieInstruction {
@@ -38,6 +45,12 @@ impl MovieInstruction {
                 title: payload.title,
                 rating: payload.rating,
                 description: payload.description,
+            },
+            2 => {
+                let payload = CommentPayload::try_from_slice(rest).unwrap();
+                Self::AddComment {
+                    comment: payload.comment
+                }
             },
             _ => return Err(ProgramError::InvalidInstructionData),
         })
